@@ -1,8 +1,9 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useState } from "react";
 
 const Register = () => {
-  const [userName, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -17,14 +18,15 @@ const Register = () => {
     const objectToPost = {
       mail: email,
       password: password,
-      userName: userName,
+      username: userName,
     };
     if (password === confirmPassword) {
       try {
         const response = await axios.post("https://vinted-bilbo.herokuapp.com/user/signup", objectToPost);
-        console.log(response);
+        const token = response.data.account.token;
+        Cookies.set("token", token, { expires: 30 });
       } catch (error) {
-        console.log(error.message);
+        console.log(error.response);
       }
     } else {
       alert("Password does not match");
@@ -37,7 +39,7 @@ const Register = () => {
         <p>Username</p>
         <input
           onChange={(event) => {
-            handleChange(event, setUsername);
+            handleChange(event, setUserName);
           }}
           type="text"
         />
