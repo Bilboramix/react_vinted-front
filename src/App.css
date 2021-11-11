@@ -1,1 +1,59 @@
 /* Other rules */
+* {
+  box-sizing: border-box;
+  object-fit: cover;
+}
+.logo {
+  width: 100px;
+}
+header {
+  background-color: rgb(243, 207, 207);
+}
+
+.container {
+  width: 1240px;
+  margin: 0 auto;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero-img {
+  height: 400px;
+  width: 100%;
+}
+
+.offer-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.announce img {
+  width: 208px;
+  height: 300px;
+  border-radius: 5px;
+}
+
+.announce {
+  border: solid 1px rgb(194, 194, 194);
+  border-radius: 5px;
+  width: 208px;
+  height: 350px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 5px 5px 5px rgb(204, 204, 204);
+  display: flex;
+  flex-direction: column;
+}
+
+.announce p {
+  color: black;
+  margin: 2px auto;
+}
+
+a {
+  text-decoration: none;
+}
