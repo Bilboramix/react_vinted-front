@@ -1,12 +1,15 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (event, setFunc) => {
     const newInput = event.target.value;
@@ -25,6 +28,7 @@ const Register = () => {
         const response = await axios.post("https://vinted-bilbo.herokuapp.com/user/signup", objectToPost);
         const token = response.data.account.token;
         Cookies.set("token", token, { expires: 30 });
+        navigate("/login");
       } catch (error) {
         console.log(error.response);
       }
