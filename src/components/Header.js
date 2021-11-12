@@ -1,8 +1,31 @@
 import logo from "../assets/img/Vinted-logo.svg.png";
+import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Header = () => {
-  return (
+  const [isConnected, setIsConnected] = useState(false);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      console.log("Connected true");
+      setIsConnected(true);
+    } else {
+      setIsConnected(false);
+    }
+  }, []);
+
+  return isConnected ? (
+    <header>
+      <div className="top-bar">
+        <Link to="/">
+          <img className="logo" src={logo} alt="logo" />
+        </Link>
+      </div>
+      <button>Se déconnecter</button>
+    </header>
+  ) : (
     <header>
       <div className="container top-bar">
         <Link to="/">

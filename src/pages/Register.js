@@ -68,6 +68,8 @@ const Register = () => {
           }}
           type="password"
         />
+        <input type="checkbox" name="machin" />
+        <span>S'inscrire à la newsletter</span>
         <button type="submit">S'inscrire</button>
       </form>
     </main>
