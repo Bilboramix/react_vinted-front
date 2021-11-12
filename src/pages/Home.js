@@ -4,14 +4,23 @@ import { useState, useEffect } from "react";
 import Announce from "../components/Announce";
 import heroImg from "../assets/img/hero.jpg";
 
-const Home = () => {
+const Home = ({ search, priceFilters }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      const homeDefaultQuerry = "https://vinted-bilbo.herokuapp.com/offers";
+      const titleQuerry = `?title=${search}`;
+      const priceMinQuerry = `?priceMin${priceFilters.values[0]}`;
+      const priceMaxQuerry = `?priceMax${priceFilters.values[1]}`;
+      let response = null;
       try {
-        const response = await axios.get("https://vinted-bilbo.herokuapp.com/offers");
+        if (search !== "") {
+          response = await axios.get(homeDefaultQuerry + titleQuerry);
+        } else {
+          response = await axios.get(homeDefaultQuerry);
+        }
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -20,7 +29,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, []);
+  }, [search]);
 
   return isLoading === true ? (
     <span>Loading ...</span>

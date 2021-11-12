@@ -2,9 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 
-const Login = () => {
+const Login = ({ setIsConnected }) => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -28,9 +27,11 @@ const Login = () => {
       console.log();
       if (Cookies.get("token") === token) {
         navigate("/");
+        setIsConnected(true);
       } else {
         Cookies.set("token", token, { expires: 30 });
         navigate("/");
+        setIsConnected(true);
       }
     } catch (error) {
       console.log(error.response);
