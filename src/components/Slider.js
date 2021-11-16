@@ -24,7 +24,6 @@ const Slider = ({ priceFilters, setPriceFilters }) => {
           </div>
         )}
         renderThumb={({ props }) => {
-          console.log(props);
           return (
             <div
               {...props}
@@ -35,11 +34,11 @@ const Slider = ({ priceFilters, setPriceFilters }) => {
                 backgroundColor: "#02B3BB",
                 border: "solid 1px white",
                 borderRadius: 50,
+                display: "flex",
+                justifyContent: "center",
               }}
             >
-              <span style={{ position: "relative" }} className="price-filter-value">
-                {props["aria-valuenow"]}
-              </span>
+              <span className="price-filter-value">{props["aria-valuenow"]}</span>
             </div>
           );
         }}

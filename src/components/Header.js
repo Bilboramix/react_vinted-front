@@ -4,15 +4,20 @@ import Cookies from "js-cookie";
 import Slider from "./Slider";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 
 const Header = ({ setPriceSorters, isConnected, setIsConnected, priceFilters, setPriceFilters, priceSorters, search, setSearch }) => {
-  const navigate = useNavigate();
   const token = Cookies.get("token");
-  if (token) {
-    setIsConnected(true);
-  } else {
-    setIsConnected(false);
-  }
+  useEffect(() => {
+    if (token) {
+      setIsConnected(true);
+    } else {
+      setIsConnected(false);
+    }
+  }, [token, setIsConnected]);
+
+  const navigate = useNavigate();
+
   return (
     <header>
       <div className="top-bar container">

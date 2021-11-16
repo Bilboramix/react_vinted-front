@@ -31,6 +31,15 @@ header {
   padding: 15px 20px;
   align-items: center;
 }
+.price-filter-value {
+  position: relative;
+  top: 19px;
+  background-color: #02b3bb;
+  height: 20px;
+  color: white;
+  padding: 2px;
+  border-radius: 5px;
+}
 
 .filters {
   display: flex;
