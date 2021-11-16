@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = ({ setIsConnected }) => {
   const [userName, setUserName] = useState("");
@@ -72,6 +72,7 @@ const Register = ({ setIsConnected }) => {
         <input type="checkbox" name="machin" />
         <span>S'inscrire à la newsletter</span>
         <button type="submit">S'inscrire</button>
+        <Link to="/login"> Vous avez déjà un compte ? Connectez vous ici.</Link>
       </form>
     </main>
   );

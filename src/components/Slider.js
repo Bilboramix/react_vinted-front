@@ -6,7 +6,7 @@ const Slider = ({ priceFilters, setPriceFilters }) => {
       <Range
         step={10}
         min={0}
-        max={5000}
+        max={1500}
         values={priceFilters.values}
         onChange={(values) => setPriceFilters({ values })}
         renderTrack={({ props, children }) => (
@@ -14,7 +14,7 @@ const Slider = ({ priceFilters, setPriceFilters }) => {
             {...props}
             style={{
               ...props.style,
-              height: "6px",
+              height: "2px",
               width: "350px",
               backgroundColor: "blue",
             }}
@@ -27,9 +27,10 @@ const Slider = ({ priceFilters, setPriceFilters }) => {
             {...props}
             style={{
               ...props.style,
-              height: "20px",
-              width: "20px",
-              backgroundColor: "#999",
+              height: "15px",
+              width: "15px",
+              backgroundColor: "white",
+              border: "solid 1px gray",
               borderRadius: 50,
             }}
           />

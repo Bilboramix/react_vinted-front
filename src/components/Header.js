@@ -2,15 +2,25 @@ import logo from "../assets/img/Vinted-logo.svg.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import Slider from "./Slider";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({ isConnected, setIsConnected, priceFilters, setPriceFilters, search, setSearch }) => {
+const Header = ({ setPriceSorters, isConnected, setIsConnected, priceFilters, setPriceFilters, search, setSearch }) => {
+  const navigate = useNavigate();
+  const token = Cookies.get("token");
+  if (token) {
+    setIsConnected(true);
+  } else {
+    setIsConnected(false);
+  }
   return (
     <header>
-      <div className="top-bar">
+      <div className="top-bar container">
         <Link to="/">
           <img className="logo" src={logo} alt="logo" />
         </Link>
-        <form>
+        <div className="filters">
+          <FontAwesomeIcon icon="search" />
           <input
             className="search"
             onChange={(event) => {
@@ -19,28 +29,40 @@ const Header = ({ isConnected, setIsConnected, priceFilters, setPriceFilters, se
             type="text"
             value={search}
           />
-          <Slider priceFilters={priceFilters} setPriceFilters={setPriceFilters} />
-          <div>
-            <input type="radio" /> <span>Sans tri</span>
-            <input type="radio" /> <span>Tri par prix croissant</span>
-            <input type="radio" /> <span>Tri par prix décroissant</span>
+          <Slider className="slider" priceFilters={priceFilters} setPriceFilters={setPriceFilters} />
+          <p>{priceFilters.values[0]}</p>
+          <p>{priceFilters.values[1]}</p>
+          <div
+            onChange={(event) => {
+              setPriceSorters(event.target.value);
+            }}
+          >
+            <input name="sorter" value="no-sort" type="radio" /> <span>Sans tri</span>
+            <input name="sorter" value="price-asc" type="radio" /> <span>Tri par prix croissant</span>
+            <input name="sorter" value="price-desc" type="radio" /> <span>Tri par prix décroissant</span>
           </div>
-          <button>Recherche</button>
-        </form>
+        </div>
         {isConnected ? (
-          <div>
+          <nav>
             <button
               onClick={() => {
                 Cookies.remove("token");
                 setIsConnected(false);
+                navigate("/");
               }}
             >
               Se déconnecter
             </button>
-            <button>Vends tes articles</button>
-          </div>
+            <button
+              onClick={() => {
+                navigate("/publish");
+              }}
+            >
+              Vendre des articles
+            </button>
+          </nav>
         ) : (
-          <div>
+          <nav>
             <Link to="/register">
               <button>S'inscrire</button>
             </Link>
@@ -48,8 +70,14 @@ const Header = ({ isConnected, setIsConnected, priceFilters, setPriceFilters, se
               <button>Se connecter</button>
             </Link>
 
-            <button>Vends tes articles</button>
-          </div>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Vendre des articles
+            </button>
+          </nav>
         )}
       </div>
     </header>

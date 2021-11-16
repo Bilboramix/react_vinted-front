@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = ({ setIsConnected }) => {
   const navigate = useNavigate();
@@ -56,6 +56,7 @@ const Login = ({ setIsConnected }) => {
           type="password"
         />
         <button type="submit">Connect</button>
+        <Link to="/register">Pas de compte ? Inscrivez vous</Link>
       </form>
     </main>
   );
