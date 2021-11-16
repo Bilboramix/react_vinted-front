@@ -37,7 +37,7 @@ const Pay = () => {
           Il ne vous reste plus qu'une étape pour vous offrir {name}. Vous allez payer {total} € (frais de protection et frais de port inclus).
         </p>
         <Elements stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm price={price} />
         </Elements>
         <button>Annuler</button>
       </div>

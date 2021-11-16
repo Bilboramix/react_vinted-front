@@ -15,7 +15,7 @@ const Offer = ({ setChosenProduct }) => {
       const response = await axios.get(`http://localhost:3001/offer/${id}`);
       setData(response.data);
       setisLoading(false);
-      console.log(data);
+      //console.log(data);
     };
     fetchData();
   }, [id]);
