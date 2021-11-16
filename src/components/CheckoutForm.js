@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, name, description }) => {
   const navigate = useNavigate();
   const stripe = useStripe();
   const element = useElements();
@@ -21,9 +21,11 @@ const CheckoutForm = ({ price }) => {
       }
       const cardElements = element.getElement(CardElement);
       const stripeResponse = await stripe.createToken(cardElements, { name: userId });
-      const response = await axios.post("http://localhost:3001/payment", {
+      console.log("STRIPE RESPONSE ============> ", stripeResponse);
+      const response = await axios.post("http://localhost:3001/pay", {
         stripeToken: stripeResponse.token.id,
         productPrice: price,
+        productDescription: description,
       });
       console.log(response.data);
       if (response.status === 200) {

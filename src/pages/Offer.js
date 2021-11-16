@@ -15,7 +15,7 @@ const Offer = ({ setChosenProduct }) => {
       const response = await axios.get(`http://localhost:3001/offer/${id}`);
       setData(response.data);
       setisLoading(false);
-      //console.log(data);
+      console.log(response.data);
     };
     fetchData();
   }, [id]);
@@ -51,7 +51,7 @@ const Offer = ({ setChosenProduct }) => {
       </ul>
       <button
         onClick={() => {
-          navigate("/pay", { state: { name: data.name, price: data.price } });
+          navigate("/pay", { state: { name: data.name, price: data.price, description: data.description } });
         }}
       >
         Acheter

@@ -7,9 +7,9 @@ import Cookies from "js-cookie";
 const Pay = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { name, price } = location.state;
+  const { name, price, description } = location.state;
 
-  const stripePromise = loadStripe(toString(process.env.PAY_API_PUBLIC));
+  const stripePromise = loadStripe("pk_test_51JwPsLHvlUKww2d9fNQSn8oxwH52199nAkwlfRABE21AULsUgehaQVuU7YOJ9jspA7LeeZn3bbHaudm3W9JcCYgJ00luPrHSSI");
 
   const shippingFees = 0.2;
   const protectionFees = price / 10;
@@ -37,7 +37,7 @@ const Pay = () => {
           Il ne vous reste plus qu'une étape pour vous offrir {name}. Vous allez payer {total} € (frais de protection et frais de port inclus).
         </p>
         <Elements stripe={stripePromise}>
-          <CheckoutForm price={price} />
+          <CheckoutForm price={price} name={name} description={description} />
         </Elements>
         <button>Annuler</button>
       </div>
