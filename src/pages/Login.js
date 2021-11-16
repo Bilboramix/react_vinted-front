@@ -23,16 +23,20 @@ const Login = ({ setIsConnected }) => {
     try {
       const response = await axios.post("http://localhost:3001/user/login", objectToPost);
       const token = response.data.account.token;
-      console.log(token);
-      console.log();
-      if (Cookies.get("token") === token) {
-        navigate("/");
-        setIsConnected(true);
-      } else {
+      const userName = response.data.account.username;
+      const userId = response.data.account._id;
+      console.log(userId);
+      if (Cookies.get("token") !== token) {
         Cookies.set("token", token, { expires: 30 });
-        navigate("/");
-        setIsConnected(true);
       }
+      if (Cookies.get("username") !== userName) {
+        Cookies.set("username", userName, { expires: 30 });
+      }
+      if (Cookies.get("userid") !== userId) {
+        Cookies.set("userid", userId, { expires: 30 });
+      }
+      navigate("/");
+      setIsConnected(true);
     } catch (error) {
       console.log(error.response);
     }

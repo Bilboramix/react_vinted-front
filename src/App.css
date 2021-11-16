@@ -13,9 +13,6 @@ input {
   max-width: 1240px;
   margin-inline: auto;
 }
-main {
-  margin-top: 25px;
-}
 
 .logo {
   width: 100px;
@@ -28,7 +25,7 @@ header {
 .top-bar {
   display: flex;
   background-color: rgb(153, 153, 177);
-  padding: 15px 20px;
+  padding: 20px 20px;
   align-items: center;
 }
 .price-filter-value {

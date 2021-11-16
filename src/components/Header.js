@@ -57,6 +57,8 @@ const Header = ({ setPriceSorters, isConnected, setIsConnected, priceFilters, se
             <button
               onClick={() => {
                 Cookies.remove("token");
+                Cookies.remove("userid");
+                Cookies.remove("username");
                 setIsConnected(false);
                 navigate("/");
               }}

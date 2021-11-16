@@ -1,9 +1,11 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import Cookies from "js-cookie";
 
 const Pay = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { name, price } = location.state;
 
@@ -12,6 +14,10 @@ const Pay = () => {
   const shippingFees = 0.2;
   const protectionFees = price / 10;
   const total = (Number(price) + Number(protectionFees) + Number(shippingFees)).toFixed(2);
+  const token = Cookies.get("token");
+  if (!token || !name || !price) {
+    navigate("/");
+  }
 
   return (
     <main className="container">

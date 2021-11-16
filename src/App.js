@@ -20,7 +20,7 @@ library.add(faSearch);
 const App = () => {
   const [isConnected, setIsConnected] = useState();
   const [search, setSearch] = useState("");
-  const [priceFilters, setPriceFilters] = useState({ values: [0, 500] });
+  const [priceFilters, setPriceFilters] = useState({ values: [0, 1500] });
   const [priceSorters, setPriceSorters] = useState("no-sort");
 
   return (

@@ -10,11 +10,12 @@ const Offer = ({ setChosenProduct }) => {
   const { id } = useParams();
 
   useEffect(() => {
-    //
+    //TO DO : Changer la structure de la DB pour quand dans data.owner, l'username soit visible pour l'afficher sur l'annonce
     const fetchData = async () => {
       const response = await axios.get(`http://localhost:3001/offer/${id}`);
       setData(response.data);
       setisLoading(false);
+      console.log(data);
     };
     fetchData();
   }, [id]);
