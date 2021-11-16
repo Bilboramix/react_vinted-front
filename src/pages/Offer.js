@@ -1,17 +1,18 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Offer = () => {
+const Offer = ({ setChosenProduct }) => {
+  const navigate = useNavigate();
   const [data, setData] = useState();
   const [isLoading, setisLoading] = useState(true);
-
   const { id } = useParams();
 
   useEffect(() => {
     //
     const fetchData = async () => {
-      const response = await axios.get(`https://vinted-bilbo.herokuapp.com/offer/${id}`);
+      const response = await axios.get(`http://localhost:3001/offer/${id}`);
       setData(response.data);
       setisLoading(false);
     };
@@ -21,7 +22,7 @@ const Offer = () => {
   return isLoading === true ? (
     <span>Chargement...</span>
   ) : (
-    <main>
+    <main className="container">
       <h2>{data.name}</h2>
       <img src={data.image} alt={data.name} />
       <ul>
@@ -35,6 +36,7 @@ const Offer = () => {
           //  On a donc besoin de la syntaxe ci-dessus
           //  console.log("______________");
           return (
+            //return du .map
             elem[keys[0]] !== "" && (
               <li key={index}>
                 <span>{keys[0]}</span>
@@ -46,6 +48,14 @@ const Offer = () => {
           );
         })}
       </ul>
+      <button
+        onClick={() => {
+          navigate("/pay");
+          setChosenProduct({ ...data });
+        }}
+      >
+        Acheter
+      </button>
     </main>
   );
 };

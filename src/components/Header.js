@@ -20,15 +20,18 @@ const Header = ({ setPriceSorters, isConnected, setIsConnected, priceFilters, se
           <img className="logo" src={logo} alt="logo" />
         </Link>
         <div className="filters">
-          <FontAwesomeIcon icon="search" />
-          <input
-            className="search"
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-            type="text"
-            value={search}
-          />
+          <div className="search">
+            <FontAwesomeIcon icon="search" />
+            <input
+              className="search"
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+              type="text"
+              value={search}
+            />
+          </div>
+
           <Slider className="slider" priceFilters={priceFilters} setPriceFilters={setPriceFilters} />
           <p>{priceFilters.values[0]}</p>
           <p>{priceFilters.values[1]}</p>
@@ -37,7 +40,7 @@ const Header = ({ setPriceSorters, isConnected, setIsConnected, priceFilters, se
               setPriceSorters(event.target.value);
             }}
           >
-            <input name="sorter" value="no-sort" type="radio" /> <span>Sans tri</span>
+            <input checked name="sorter" value="no-sort" type="radio" /> <span>Sans tri</span>
             <input name="sorter" value="price-asc" type="radio" /> <span>Tri par prix croissant</span>
             <input name="sorter" value="price-desc" type="radio" /> <span>Tri par prix décroissant</span>
           </div>

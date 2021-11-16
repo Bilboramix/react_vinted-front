@@ -15,8 +15,9 @@ const Slider = ({ priceFilters, setPriceFilters }) => {
             style={{
               ...props.style,
               height: "2px",
-              width: "350px",
-              backgroundColor: "blue",
+              width: "200px",
+              backgroundColor: "#02B3BB",
+              margin: "0 15px",
             }}
           >
             {children}
@@ -29,8 +30,8 @@ const Slider = ({ priceFilters, setPriceFilters }) => {
               ...props.style,
               height: "15px",
               width: "15px",
-              backgroundColor: "white",
-              border: "solid 1px gray",
+              backgroundColor: "#02B3BB",
+              border: "solid 1px white",
               borderRadius: 50,
             }}
           />

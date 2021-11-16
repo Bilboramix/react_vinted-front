@@ -12,7 +12,7 @@ const Home = ({ priceSorters, search, priceFilters }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const homeUrl = "https://vinted-bilbo.herokuapp.com/offers?";
+      const homeUrl = "http://localhost:3001/offers?";
       const querries = {};
       let url = homeUrl;
 
@@ -32,9 +32,6 @@ const Home = ({ priceSorters, search, priceFilters }) => {
           url += "&";
         }
       }
-      console.log(priceSorters);
-      console.log(querries);
-      console.log(url);
 
       try {
         const response = await axios.get(url);
