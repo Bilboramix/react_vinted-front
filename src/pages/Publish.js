@@ -34,7 +34,7 @@ const Publish = () => {
       formData.append("brand", brand);
       formData.append("color", color);
       formData.append("city", city);
-      const response = await axios.post("http://localhost:3001/offer/publish", formData, { headers: { authorization: `Bearer ${token}` } });
+      const response = await axios.post("https://vinted-bilbo.herokuapp.com/offer/publish", formData, { headers: { authorization: `Bearer ${token}` } });
       //rediriger vers la page de l'offre
       console.log(response);
     } catch (error) {

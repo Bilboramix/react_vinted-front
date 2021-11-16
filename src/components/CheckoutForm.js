@@ -22,7 +22,7 @@ const CheckoutForm = ({ price, name, description }) => {
       const cardElements = element.getElement(CardElement);
       const stripeResponse = await stripe.createToken(cardElements, { name: userId });
       console.log("STRIPE RESPONSE ============> ", stripeResponse);
-      const response = await axios.post("http://localhost:3001/pay", {
+      const response = await axios.post("https://vinted-bilbo.herokuapp.com/pay", {
         stripeToken: stripeResponse.token.id,
         productPrice: price,
         productDescription: description,

@@ -25,7 +25,7 @@ const Register = ({ setIsConnected }) => {
     };
     if (password === confirmPassword) {
       try {
-        const response = await axios.post("http://localhost:3001/user/signup", objectToPost);
+        const response = await axios.post("https://vinted-bilbo.herokuapp.com/user/signup", objectToPost);
         const token = response.data.account.token;
         Cookies.set("token", token, { expires: 30 });
         setIsConnected(true);

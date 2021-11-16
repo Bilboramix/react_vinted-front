@@ -12,7 +12,7 @@ const Offer = ({ setChosenProduct }) => {
   useEffect(() => {
     //TO DO : Changer la structure de la DB pour quand dans data.owner, l'username soit visible pour l'afficher sur l'annonce
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:3001/offer/${id}`);
+      const response = await axios.get(`https://vinted-bilbo.herokuapp.com/offer/${id}`);
       setData(response.data);
       setisLoading(false);
       console.log(response.data);

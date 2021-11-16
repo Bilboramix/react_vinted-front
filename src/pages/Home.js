@@ -12,7 +12,7 @@ const Home = ({ priceSorters, search, priceFilters }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const homeUrl = "http://localhost:3001/offers?";
+      const homeUrl = "https://vinted-bilbo.herokuapp.com/offers?";
       const querries = {};
       let url = homeUrl;
 

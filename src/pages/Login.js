@@ -21,7 +21,7 @@ const Login = ({ setIsConnected }) => {
       mail: email,
     };
     try {
-      const response = await axios.post("http://localhost:3001/user/login", objectToPost);
+      const response = await axios.post("https://vinted-bilbo.herokuapp.com/user/login", objectToPost);
       const token = response.data.account.token;
       const userName = response.data.account.username;
       const userId = response.data.account._id;
