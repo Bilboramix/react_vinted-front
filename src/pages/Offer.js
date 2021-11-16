@@ -50,8 +50,7 @@ const Offer = ({ setChosenProduct }) => {
       </ul>
       <button
         onClick={() => {
-          navigate("/pay");
-          setChosenProduct({ ...data });
+          navigate("/pay", { state: { name: data.name, price: data.price } });
         }}
       >
         Acheter

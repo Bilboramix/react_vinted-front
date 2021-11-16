@@ -23,19 +23,26 @@ const Slider = ({ priceFilters, setPriceFilters }) => {
             {children}
           </div>
         )}
-        renderThumb={({ props }) => (
-          <div
-            {...props}
-            style={{
-              ...props.style,
-              height: "15px",
-              width: "15px",
-              backgroundColor: "#02B3BB",
-              border: "solid 1px white",
-              borderRadius: 50,
-            }}
-          />
-        )}
+        renderThumb={({ props }) => {
+          console.log(props);
+          return (
+            <div
+              {...props}
+              style={{
+                ...props.style,
+                height: "15px",
+                width: "15px",
+                backgroundColor: "#02B3BB",
+                border: "solid 1px white",
+                borderRadius: 50,
+              }}
+            >
+              <span style={{ position: "relative" }} className="price-filter-value">
+                {props["aria-valuenow"]}
+              </span>
+            </div>
+          );
+        }}
       />
     </div>
   );

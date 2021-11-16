@@ -34,7 +34,10 @@ header {
 
 .filters {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+.slider {
+  margin-top: 15px;
 }
 .search {
   display: flex;
