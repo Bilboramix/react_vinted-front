@@ -27,6 +27,7 @@ const Offer = ({ setChosenProduct }) => {
       <h2>{data.name}</h2>
       <img src={data.image} alt={data.name} />
       <ul>
+        <li>Description : {data.description}</li>
         {data.details.map((elem, index) => {
           const keys = Object.keys(elem);
           //  à chaque tour du map, je créée un tableau avec les clefs de mon objet "elem"
