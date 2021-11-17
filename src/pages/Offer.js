@@ -8,6 +8,7 @@ const Offer = ({ setChosenProduct }) => {
   const [data, setData] = useState();
   const [isLoading, setisLoading] = useState(true);
   const { id } = useParams();
+  console.log(data);
 
   useEffect(() => {
     //TO DO : Changer la structure de la DB pour quand dans data.owner, l'username soit visible pour l'afficher sur l'annonce

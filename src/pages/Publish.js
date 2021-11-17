@@ -51,7 +51,12 @@ const Publish = () => {
           <PublishInput state={name} set={setName} ex={"ex : Chemise grise Lacoste"} />
 
           <label>Description *</label>
-          <textarea state={description} set={setDescription} placeholder={"ex : Très peu portée, achetée il y a 1 an"} />
+          <textarea
+            onChange={(event) => {
+              setDescription(event.target.value);
+            }}
+            placeholder={"ex : Très peu portée, achetée il y a 1 an"}
+          />
 
           <label>Prix *</label>
           <PublishInput state={price} set={setPrice} ex={"ex : 25€"} />
